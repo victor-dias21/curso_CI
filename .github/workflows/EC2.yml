@@ -26,18 +26,18 @@ jobs:
     - name: Execute remote SSH commands
       uses: appleboy/ssh-action@v1
       with:
-        host: ${{ secrets.REMOTE_HOST }}
-        username: ${{ secrets.REMOTE_USER }}
-        key: ${{ secrets.SSH_PRIVATE_KEY }}
+        host: ${{secrets.REMOTE_HOST}}
+        username: ${{secrets.REMOTE_USER}}
+        key: ${{secrets.SSH_PRIVATE_KEY}}
         port: 22
         script: |
           # Gerar .env no EC2
-          cat <<EOF > /home/${{ secrets.REMOTE_USER }}/.env
-          HOST=${{ secrets.DBHOST }}
-          USER=${{ secrets.DBUSER }}
-          PASSWORD=${{ secrets.DBPASS }}
-          DBNAME=${{ secrets.DBNAME }}
-          DBPORT=${{ secrets.DBPORT }}
+          cat <<EOF > /home/${{secrets.REMOTE_USER}}/.env
+          HOST=${{secrets.DBHOST}}
+          USER=${{secrets.DBUSER}}
+          PASSWORD=${{secrets.DBPASS}}
+          DBNAME=${{secrets.DBNAME}}
+          DBPORT=${{secrets.DBPORT}}
           PORT=8000
           EOF
 
