@@ -10,7 +10,7 @@ jobs:
     - name: Download a Build Artifact
       uses: actions/download-artifact@v5.0.0
       with:
-        name: app main em golag
+        name: app-main-golang
 
     - uses: actions/checkout@v3
 
