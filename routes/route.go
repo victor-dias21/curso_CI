@@ -3,6 +3,7 @@ package routes
 import (
 	"github.com/gin-gonic/gin"
 	"github.com/guilhermeonrails/api-go-gin/controllers"
+	"os"
 )
 
 func HandleRequest() {
@@ -19,5 +20,12 @@ func HandleRequest() {
 	r.GET("/alunos/", controllers.BuscaAlunoPorCPF)
 	r.GET("/index", controllers.ExibePaginaIndex)
 	r.NoRoute(controllers.RotaNaoEncontrada)
-	r.Run()
+
+	// pega a porta da variável de ambiente (ou usa 8080 por padrão)
+	port := os.Getenv("PORT")
+	if port == "" {
+		port = "8080"
+	}
+
+	r.Run(":" + port)
 }
