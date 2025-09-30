@@ -24,7 +24,7 @@ func HandleRequest() {
 	// pega a porta da variável de ambiente (ou usa 8080 por padrão)
 	port := os.Getenv("PORT")
 	if port == "" {
-		port = "8080"
+		port = "8000"
 	}
 
 	r.Run(":" + port)
