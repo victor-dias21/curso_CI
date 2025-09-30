@@ -30,11 +30,13 @@ jobs:
         key: ${{ secrets.SSH_PRIVATE_KEY }}
         port: 22
         script: |
+          chmod +x main
           nohup HOST=${{ secrets.DBHOST }} \
-           USER=${{ secrets.DBUSER }} \
-           PASSWORD=${{ secrets.DBPASS }} \
-           DBNAME=${{ secrets.DBNAME }} \
-           DBPORT=${{ secrets.DBPORT }} \
-           PORT=8000 \
-           ./main > nohup.out 2> nohup.err < /dev/null &
+            USER=${{ secrets.DBUSER }} \
+            PASSWORD=${{ secrets.DBPASS }} \
+            DBNAME=${{ secrets.DBNAME }} \
+            DBPORT=${{ secrets.DBPORT }} \
+            PORT=8000 \
+            ./main > nohup.out 2> nohup.err < /dev/null &
+
 
