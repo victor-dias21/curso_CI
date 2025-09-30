@@ -15,12 +15,17 @@ var (
 )
 
 func ConectaComBancoDeDados() {
+	sslMode := os.Getenv("SSL_MODE")
+	if sslMode == "" {
+		sslMode = "require" // padrão produção
+	}
+
 	stringDeConexao := "host=" + os.Getenv("HOST") +
 		" user=" + os.Getenv("USER") +
 		" password=" + os.Getenv("PASSWORD") +
 		" dbname=" + os.Getenv("DBNAME") +
 		" port=" + os.Getenv("DBPORT") +
-		" sslmode=require"
+		" sslmode=" + sslMode
 
 	DB, err = gorm.Open(postgres.Open(stringDeConexao), &gorm.Config{})
 	if err != nil {

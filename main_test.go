@@ -8,7 +8,9 @@ import (
 	"net/http/httptest"
 	"strconv"
 	"testing"
-
+	"log"
+	"os"
+	"github.com/joho/godotenv"
 	"github.com/gin-gonic/gin"
 	"github.com/guilhermeonrails/api-go-gin/controllers"
 	"github.com/guilhermeonrails/api-go-gin/database"
@@ -17,6 +19,14 @@ import (
 )
 
 var ID int
+
+func TestMain(m *testing.M) {
+	err := godotenv.Load(".env.test")
+	if err != nil {
+		log.Fatalf("Erro ao carregar .env.test: %v", err)
+	}
+	os.Exit(m.Run())
+}
 
 func SetupDasRotasDeTeste() *gin.Engine {
 	gin.SetMode(gin.ReleaseMode)
